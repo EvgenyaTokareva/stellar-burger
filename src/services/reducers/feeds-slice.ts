@@ -1,15 +1,17 @@
-import { TOrdersData, TOrder } from '@utils-types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { TOrdersData, TOrder } from '@utils-types';
 import { getFeeds, orderByNumber } from '../actions';
 
 interface feedsState {
   orders: TOrdersData | null;
   isLoading: boolean;
+  error: string | undefined;
 }
 
 const initialState: feedsState = {
   orders: null,
-  isLoading: false
+  isLoading: false,
+  error: undefined
 };
 
 const feedsSlice = createSlice({
@@ -24,6 +26,7 @@ const feedsSlice = createSlice({
       })
       .addCase(getFeeds.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action.error.message;
       })
       .addCase(
         getFeeds.fulfilled,

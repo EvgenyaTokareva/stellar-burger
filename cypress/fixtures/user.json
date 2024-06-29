@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "refreshToken": "refresh-test-token",
+  "accessToken": "access-test-token",
+  "user": {
+    "email": "multipodarok2012@mail.ru",
+    "name": "Evgeniya"
+  }
+}
